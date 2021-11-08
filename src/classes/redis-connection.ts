@@ -98,7 +98,7 @@ export class RedisConnection extends EventEmitter {
       return;
     }
 
-    if (client.status === 'wait') {
+    if (client.status === 'wait' && !client.options.lazyConnect) {
       return client.connect();
     }
 
